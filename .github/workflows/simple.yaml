@@ -1,0 +1,14 @@
+name: Shell Commands
+
+on: [push]
+
+jobs:
+  run-shell-commands:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo os details
+        run: uname -a
+      - name: multiline script
+        run: |
+          node -v
+          npm -v
