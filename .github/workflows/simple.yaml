@@ -19,3 +19,9 @@ jobs:
       - name: echo windows details
         run: "[System.Environment]::OSVersion.Version"
         shell: powershell
+  run-macos-commands:
+    runs-on: macos-latest
+    needs: [run-shell-commands]
+    steps:
+      - name: print what is in the Applications folder
+        run: ls ~/Applications
