@@ -11,5 +11,5 @@ jobs:
       - name: print processor info from python
         run: |
           import platform
-          platform.processor()
+          print(platform.processor())
         shell: python
