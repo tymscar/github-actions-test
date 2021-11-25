@@ -24,4 +24,4 @@ jobs:
     needs: [run-shell-commands]
     steps:
       - name: print what is in the Applications folder
-        run: ls -la ~/
+        run: cat ~/systeminfo.txt
