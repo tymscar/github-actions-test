@@ -13,3 +13,9 @@ jobs:
           import platform
           print(platform.processor())
         shell: python
+  run-windows-commands:
+    runs-on: windows-latest
+    steps:
+      - name: echo windows details
+        run: "[System.Environment]::OSVersion.Version"
+        shell: powershell
