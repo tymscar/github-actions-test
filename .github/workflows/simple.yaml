@@ -8,7 +8,8 @@ jobs:
     steps:
       - name: echo os details
         run: uname -a
-      - name: multiline script
+      - name: print processor info from python
         run: |
-          node -v
-          npm -v
+          import platform
+          platform.processor()
+        shell: python
