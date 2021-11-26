@@ -10,7 +10,7 @@ jobs:
       - name: clones the repo
         uses: actions/checkout@v2
         with:
-          repository: "tymscar/github-actions-test"
+          persist-credentials: false
       - name: Push a random file
         run: |
           git config --global user.email "test@test.com"
