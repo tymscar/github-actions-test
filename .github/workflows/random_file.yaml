@@ -19,14 +19,13 @@ jobs:
           git fetch
           git checkout main
           git checkout -b new-branch
-          git branch --set-upstream-to=origin/new-branch
           git pull
           ls -la
           echo $RANDOM >> random.txt
           ls -la
           git add .
           git commit -m "added random file"
-          git push
+          git push -u
       - name: Create issue using REST API
         run: |
           curl --request POST \
