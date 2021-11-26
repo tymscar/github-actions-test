@@ -15,16 +15,19 @@ jobs:
         run: |
           pwd
           ls -la
+          git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
           git config --global user.email "test@test.com"
           git config --global user.name "test"
+          git fetch
           git checkout main
           git checkout -b new-branch
+          git pull
           ls -la
           echo $RANDOM >> random.txt
           ls -la
           git add .
           git commit -m "added random file"
-          git push -u origin new-branch:new-branch
+          git push -u origin new-branch
       - name: Create issue using REST API
         run: |
           curl --request POST \
