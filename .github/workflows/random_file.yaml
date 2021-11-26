@@ -13,15 +13,16 @@ jobs:
           repository: "tymscar/github-actions-test"
       - name: Push a random file
         run: |
-          git remote add authed-origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
           git config --global user.email "test@test.com"
           git config --global user.name "test"
-          git checkout main
-          git checkout -b new-branch
           echo $RANDOM >> random.txt
           git add .
           git commit -m "added random file"
-          git push -u authed-origin new-branch
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
       - name: Create issue using REST API
         run: |
           curl --request POST \
