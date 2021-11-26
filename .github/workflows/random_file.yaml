@@ -13,18 +13,12 @@ jobs:
           repository: "tymscar/github-actions-test"
       - name: Push a random file
         run: |
-          pwd
-          ls -la
           git remote add authed-origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
           git config --global user.email "test@test.com"
           git config --global user.name "test"
-          git fetch
           git checkout main
           git checkout -b new-branch
-          git pull
-          ls -la
           echo $RANDOM >> random.txt
-          ls -la
           git add .
           git commit -m "added random file"
           git push -u authed-origin new-branch
