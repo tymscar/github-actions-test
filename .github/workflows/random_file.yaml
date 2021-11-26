@@ -7,26 +7,25 @@ jobs:
     permissions:
       issues: write
     steps:
+      - name: clones the repo
+        uses: actions/checkout@v2
+        with:
+          repository: "tymscar/github-actions-test"
       - name: Push a random file
         run: |
           pwd
           ls -la
-          git config --global init.defaultBranch main
-          git init
-          git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
           git config --global user.email "test@test.com"
           git config --global user.name "test"
-          git fetch
           git checkout main
           git checkout -b new-branch
           git branch --set-upstream-to=origin/new-branch new-branch
-          git pull
           ls -la
           echo $RANDOM >> random.txt
           ls -la
           git add .
           git commit -m "added random file"
-          git push -u origin new-branch
+          git push -u origin new-branch:new-branch
       - name: Create issue using REST API
         run: |
           curl --request POST \
