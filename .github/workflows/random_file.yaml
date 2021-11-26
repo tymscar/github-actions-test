@@ -19,6 +19,7 @@ jobs:
           git fetch
           git checkout main
           git checkout -b new-branch
+          git branch --set-upstream-to=origin/new-branch new-branch
           git pull
           ls -la
           echo $RANDOM >> random.txt
