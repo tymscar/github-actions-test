@@ -1,5 +1,5 @@
 name: Create file with random content
-on: [push]
+on: [workflow_dispatch]
 
 jobs:
   create-issue:
@@ -21,7 +21,7 @@ jobs:
           echo $RANDOM >> random.txt
           ls -la
           git add .
-          git commit -m "added random file"
+          git commit -m "added random  file"
           git push
       - name: Create issue using REST API
         run: |
