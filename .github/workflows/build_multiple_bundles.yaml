@@ -1,0 +1,19 @@
+name: Multiple Bundles Builder Workflow
+
+on: push
+
+jobs:
+  run-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: clone the github repo
+        uses: actions/checkout@v2
+        with:
+          repository: "tymscar/github-actions-test"
+
+      - name: get a list of affected packages
+        id: affected-packages
+        run: cat command-output | python3 jsonParser.py
+
+      - name: print previous list of packages
+        run: echo "The list of packages is ${{ steps.affected-packages.outputs.PACKAGES }}"

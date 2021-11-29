@@ -1,0 +1,22 @@
+[
+    {
+        "name": "package-viz-cat",
+        "path": "/dev/null",
+        "version": "1.2.3"
+    },
+    {
+        "name": "package-viz-dog",
+        "path": "/dev/null",
+        "version": "2.2.1"
+    },
+    {
+        "name": "package-viz-elephant",
+        "path": "/dev/null",
+        "version": "1.6.2"
+    },
+    {
+        "name": "package-viz-penguin",
+        "path": "/dev/null",
+        "version": "4.0.1"
+    }
+]
