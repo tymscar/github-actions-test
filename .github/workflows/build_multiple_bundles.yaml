@@ -15,5 +15,18 @@ jobs:
         id: affected-packages
         run: cat command-output | python3 jsonParser.py
 
-      - name: print previous list of packages
-        run: echo "The list of packages is ${{ steps.affected-packages.outputs.PACKAGES }}"
+      - name: build cat package
+        if: ${{ contains(steps.affected-packages.outputs.PACKAGES, 'package-viz-cat') }}
+        run: echo "😺 built!"
+
+      - name: build dog package
+        if: ${{ contains(steps.affected-packages.outputs.PACKAGES, 'package-viz-dog') }}
+        run: echo "🐶 built!"
+
+      - name: build elephant package
+        if: ${{ contains(steps.affected-packages.outputs.PACKAGES, 'package-viz-elephant') }}
+        run: echo "🐘 built!"
+
+      - name: build penguin package
+        if: ${{ contains(steps.affected-packages.outputs.PACKAGES, 'package-viz-penguin') }}
+        run: echo "🐧 built!"
