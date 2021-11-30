@@ -6,8 +6,8 @@ jobs:
 
   get-packages-in-need-of-building:
     runs-on: ubuntu-latest
-      outputs:
-        packages: ${{ steps.affected-packages.outputs.PACKAGES }}
+    outputs:
+      packages: ${{ steps.affected-packages.outputs.PACKAGES }}
       steps:
       - name: clone the github repo
         uses: actions/checkout@v2
