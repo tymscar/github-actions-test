@@ -26,10 +26,5 @@ jobs:
       matrix:
         package: ${{ fromJSON(needs.get-packages-in-need-of-building.outputs.packages) }}
     steps:
-      - name: print package
-        run: echo ${{ matrix.package }}
-
-
-      #- name: build package
-      #  if: ${{ contains(steps.affected-packages.outputs.PACKAGES, matrix.package) }}
-      #  run: echo "${{ matrix.package }} built!"
+      - name: build package
+        run: echo "${{ matrix.package.name }} built!"
