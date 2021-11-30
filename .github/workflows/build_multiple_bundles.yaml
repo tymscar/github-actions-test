@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       packages: ${{ steps.affected-packages.outputs.PACKAGES }}
-      steps:
+    steps:
       - name: clone the github repo
         uses: actions/checkout@v2
         with:
