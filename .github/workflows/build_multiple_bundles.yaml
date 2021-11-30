@@ -5,6 +5,15 @@ on: push
 jobs:
   run-github-actions:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package:
+          [
+            "package-viz-cat",
+            "package-viz-dog",
+            "package-viz-elephant",
+            "package-viz-penguin",
+          ]
     steps:
       - name: clone the github repo
         uses: actions/checkout@v2
@@ -16,17 +25,5 @@ jobs:
         run: cat command-output | python3 jsonParser.py
 
       - name: build cat package
-        if: ${{ contains(steps.affected-packages.outputs.PACKAGES, 'package-viz-cat') }}
-        run: echo "😺 built!"
-
-      - name: build dog package
-        if: ${{ contains(steps.affected-packages.outputs.PACKAGES, 'package-viz-dog') }}
-        run: echo "🐶 built!"
-
-      - name: build elephant package
-        if: ${{ contains(steps.affected-packages.outputs.PACKAGES, 'package-viz-elephant') }}
-        run: echo "🐘 built!"
-
-      - name: build penguin package
-        if: ${{ contains(steps.affected-packages.outputs.PACKAGES, 'package-viz-penguin') }}
-        run: echo "🐧 built!"
+        if: ${{ contains(steps.affected-packages.outputs.PACKAGES, ${{ matrix.package }}) }}
+        run: echo "${{ matrix.package }} built!"
