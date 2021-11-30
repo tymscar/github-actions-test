@@ -10,4 +10,4 @@ data = json.loads(jsonInput)
 
 listOfPackages = ",".join([x["name"] for x in data])
 
-print("::set-output name=PACKAGES::\"" + jsonInput.replace("\n", "").replace("\"", "'").replace(" ", "") + "\"")
+print("::set-output name=PACKAGES::" + jsonInput.replace("\n", "").replace("\"", "'").replace(" ", ""))
