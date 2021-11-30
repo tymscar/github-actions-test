@@ -3,27 +3,33 @@ name: Multiple Bundles Builder Workflow
 on: push
 
 jobs:
-  run-github-actions:
+
+  get-packages-in-need-of-building:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        package:
-          [
-            "package-viz-cat",
-            "package-viz-dog",
-            "package-viz-elephant",
-            "package-viz-penguin",
-          ]
-    steps:
+      outputs:
+        packages: ${{ steps.affected-packages.outputs.PACKAGES }}
+      steps:
       - name: clone the github repo
         uses: actions/checkout@v2
         with:
           repository: "tymscar/github-actions-test"
 
-      - name: get a list of affected packages
+      - name: get json of affected packages
         id: affected-packages
         run: cat command-output | python3 jsonParser.py
 
-      - name: build package
-        if: ${{ contains(steps.affected-packages.outputs.PACKAGES, matrix.package) }}
-        run: echo "${{ matrix.package }} built!"
+
+  run-github-actions:
+    needs: get-packages-in-need-of-building
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package: ${{ fromJSON(needs.get-packages-in-need-of-building.outputs.packages) }}
+    steps:
+      - name: print package
+        run: echo ${{ matrix.package }}
+
+
+      #- name: build package
+      #  if: ${{ contains(steps.affected-packages.outputs.PACKAGES, matrix.package) }}
+      #  run: echo "${{ matrix.package }} built!"
