@@ -10,11 +10,6 @@
         "version": "2.2.1"
     },
     {
-        "name": "package-viz-elephant",
-        "path": "/dev/null",
-        "version": "1.6.2"
-    },
-    {
         "name": "package-viz-penguin",
         "path": "/dev/null",
         "version": "4.0.1"

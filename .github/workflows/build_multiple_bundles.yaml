@@ -24,6 +24,6 @@ jobs:
         id: affected-packages
         run: cat command-output | python3 jsonParser.py
 
-      - name: build cat package
+      - name: build package
         if: ${{ contains(steps.affected-packages.outputs.PACKAGES, matrix.package) }}
         run: echo "${{ matrix.package }} built!"
