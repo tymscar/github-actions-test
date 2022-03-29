@@ -27,4 +27,4 @@ jobs:
         package: ${{ fromJSON(needs.get-packages-in-need-of-building.outputs.packages) }}
     steps:
       - name: build package
-        run: echo "${{ matrix.package.name }} built!"
+        run: echo "${{ matrix.package.name }} built! "
