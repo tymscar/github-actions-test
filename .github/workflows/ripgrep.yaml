@@ -5,6 +5,8 @@ jobs:
   testing-ripgrep:
     runs-on: ubuntu-latest
     steps:
+      - name: install ripgrep in gha
+        run: sudo apt-get install ripgrep
       - name: Run ripgrep on stdinput
         run: echo "Hello, world!" | rg "Hello"
       - name: create a file with a message
