@@ -1,0 +1,13 @@
+name: Testing ripgrep in gha 
+
+on: push
+jobs:
+  testing-ripgrep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run ripgrep on stdinput
+        run: echo "Hello, world!" | rg "Hello"
+      - name: create a file with a message
+        run: echo "Hello, world!" > hello.txt
+      - name: Run ripgrep on a file
+        run: rg "Hello" hello.txt  
